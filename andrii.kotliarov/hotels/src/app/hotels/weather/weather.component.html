@@ -1,0 +1,11 @@
+<div class="temperatur">
+    <h5>{{ description }}</h5>
+    <span class="w-line"></span>
+    <span [ngClass]="weather.icon"></span>
+    <h2>
+        {{weather.temperature}}<sup class="degree">°</sup>
+    </h2>
+    <h6>
+        Wind {{weather.wind}}<sup class="degree">°</sup>
+    </h6>
+</div>

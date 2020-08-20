@@ -1,0 +1,40 @@
+<div class="element-left">
+    <div class="element-bg-img">
+        <img class="img-100 img-responsive" [src]="selectedHotel.picture" [alt]="selectedHotel.description">
+    </div>
+    <div class="element-left-bottom">
+        <div class="ele-strip">
+            <ul>
+                <li *ngFor="let category of categories;">
+                    <a (click)="selectTab(category)"
+                        [ngClass]="{'active-link': isSelected(category) }">{{ category.categoryName }}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="village">
+            <h3>Righteous indignation & like</h3>
+            <span class="line"></span>
+            <div class="activity_box" [ngSwitch]="selectedCategory.categoryName">
+                <div *ngFor="let category of categories;">
+                    <div *ngSwitchCase="category.categoryName">
+                        <div class="scrollbar">
+                            <div *ngIf="!category.categoryHotels.length">
+                                <div class="activity-row">
+                                    {{ category.categoryName }}
+                                </div>
+                            </div>
+                            <div *ngIf="category.categoryHotels.length">
+                                <div *ngFor="let hotel of category.categoryHotels; ">
+                                    <div
+                                        [ngClass]="{'activity-row': true, 'active-hotel': hotel.id === selectedHotel.id }">
+                                        <app-hotel [hotel]="hotel" (click)="hotelPicked(hotel.id)"></app-hotel>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
